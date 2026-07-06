@@ -2,24 +2,24 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
+// Connect Database
 require("./database/db");
 
+// Import Routes
 const authRoutes = require("./routes/auth");
-console.log("✅ Auth routes loaded");
+const expenseRoutes = require("./routes/expense");
+
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
-app.post("/test", (req, res) => {
-    res.json({
-        success: true,
-        message: "Test route working"
-    });
-});
-app.use("/api/auth", (req, res, next) => {
-    console.log("✅ Auth route reached:", req.method, req.url);
-    next();
-}, authRoutes);
+
+// API Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/expense", expenseRoutes);
+
+// Home Route
 app.get("/", (req, res) => {
     res.json({
         success: true,
@@ -27,8 +27,9 @@ app.get("/", (req, res) => {
     });
 });
 
+// Start Server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
 });

@@ -1,0 +1,79 @@
+.add-page{
+
+    display:flex;
+
+}
+
+.add-content{
+
+    width:100%;
+    padding:35px;
+
+}
+
+.add-card{
+
+    width:500px;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+}
+
+.add-card h2{
+
+    margin-bottom:25px;
+    color:#1e293b;
+
+}
+
+.form-group{
+
+    margin-bottom:18px;
+
+}
+
+.form-group label{
+
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+
+}
+
+.form-group input,
+.form-group select{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+
+    border-color:#2563eb;
+
+}
+
+.add-btn{
+
+    width:100%;
+    padding:12px;
+    background:#16a34a;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    transition:.3s;
+
+}
+
+.add-btn:hover{
+
+    background:#15803d;
+
+}

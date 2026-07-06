@@ -87,7 +87,6 @@ exports.login = (req,res)=>{
             res.json({
 
                 success:true,
-                message:"Login Successful",
                 user:{
                     id:user.id,
                     name:user.name,

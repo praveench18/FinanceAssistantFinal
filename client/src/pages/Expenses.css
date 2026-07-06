@@ -1,0 +1,55 @@
+.expense-page {
+    display: flex;
+}
+
+.expense-content {
+    width: 100%;
+    padding: 35px;
+}
+
+.expense-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+
+.expense-card h2 {
+    margin-bottom: 20px;
+    color: #1e293b;
+}
+
+.expense-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.expense-table th {
+    background: #2563eb;
+    color: white;
+    padding: 14px;
+    text-align: left;
+}
+
+.expense-table td {
+    padding: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.expense-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.delete-btn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.delete-btn:hover {
+    background: #b91c1c;
+}
