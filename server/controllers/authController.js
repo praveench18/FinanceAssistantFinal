@@ -66,9 +66,9 @@ exports.login = (req,res)=>{
 
             if(!user){
 
-                return res.json({
+                return res.status(401).json({
                     success:false,
-                    message:"User not found"
+                    message:"Incorrect Password"
                 });
 
             }
@@ -77,7 +77,7 @@ exports.login = (req,res)=>{
 
             if(!match){
 
-                return res.json({
+                return res.status(401).json({
                     success:false,
                     message:"Incorrect Password"
                 });
