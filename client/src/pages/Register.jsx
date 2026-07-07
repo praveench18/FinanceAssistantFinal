@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import API from "../services/api";
 import "./login.css";
-const [loading, setLoading] = useState(false);
 export default function Register() {
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
