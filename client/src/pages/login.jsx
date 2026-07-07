@@ -2,16 +2,19 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import API from "../services/api";
 import "./login.css";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import { toast } from "react-toastify";
 export default function Login() {
-    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-
+    
     const [formData, setFormData] = useState({
         email: "",
         password: ""
     });
-
+    
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -22,6 +25,21 @@ export default function Login() {
     const handleSubmit = async (e) => {
 
         e.preventDefault();
+        setError("");
+        if (!formData.email.trim()) {
+            setError("Email is required.");
+            return;
+        }
+        if (!formData.password.trim()) {
+            setError("Password is required.");
+            return;
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(formData.email)) {
+            setError("Please enter a valid email address.");
+            return;
+        }
         setLoading(true);
 
         try {
@@ -33,12 +51,22 @@ export default function Login() {
                 localStorage.setItem("user", JSON.stringify(res.data.user));
 
                 navigate("/dashboard");
+            }else{
+                setError(res.data.message);
+                    toast.error(res.data.message);
             }
 
         } catch (err) {
 
             console.log(err);
-            toast.error("Login Failed");
+            const message =
+                err.response?.data?.message || "Invalid email or password.";
+            setError(message);
+            toast.error(message);
+
+        }finally {
+
+             setLoading(false);
 
         }
 
@@ -74,8 +102,10 @@ export default function Login() {
                     <input
                         type="email"
                         name="email"
+                        value={formData.email}
                         placeholder="Enter your email"
                         onChange={handleChange}
+                        disabled={loading}
                     />
 
                 </div>
@@ -84,20 +114,54 @@ export default function Login() {
 
                 <label>Password</label>
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    onChange={handleChange}
-                />
+                <div className="password-input-container">
 
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        value={formData.password}
+                        placeholder="Enter your password"
+                        onChange={handleChange}
+                        disabled={loading}
+                        className="password-input"
+                    />
+
+                    <button
+                        type="button"
+                        className="show-password-btn"
+                        onClick={() => setShowPassword(!showPassword)}
+                        disabled={loading}
+                    >
+                        {showPassword ? <FiEyeOff /> : <FiEye />}                  
+                    </button>
                 </div>
+                </div>
+                <button
+                    type="button"
+                    className="forgot-password"
+                    onClick={() => navigate("/forgot-password")}
+                >
+                    Forgot Password?
+                </button>
+                {error && (
+                    <p className="error-message">
+                        {error}
+                    </p>
+                )}
+
                 <button
                     type="submit"
                     className="login-btn"
                     disabled={loading}
                 >
-                    {loading ? "Logging in..." : "Login"}
+                   {loading ? (
+                        <>
+                            <span className="spinner"></span>
+                            <span>Logging in...</span>
+                        </>
+                    ) : (
+                        "Login"
+                    )}  
                 </button>
 
                <p className="register-link">

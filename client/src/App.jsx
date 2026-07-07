@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import AddExpense from "./pages/Addexpense";
 import Expenses from "./pages/Expenses";
 
+import ForgotPassword from "./pages/ForgotPassword";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 
@@ -43,6 +44,10 @@ function App() {
             <Expenses />
           </ProtectedRoute>
         }
+      />
+      <Route
+        path="/forgot-password"
+        element={<ForgotPassword />}
       />
     </Routes>
     <ToastContainer/>
