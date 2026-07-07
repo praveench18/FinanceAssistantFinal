@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import API from "../services/api";
-import "./Login.css";
+import "./login.css";
 import { toast } from "react-toastify";
 export default function Login() {
     const [loading, setLoading] = useState(false);
