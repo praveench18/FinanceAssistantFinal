@@ -29,7 +29,7 @@ function App() {
         path="/add"
         element={
           <ProtectedRoute>
-            <Addexpense />
+            <AddExpense />
           </ProtectedRoute>
         }
       />
