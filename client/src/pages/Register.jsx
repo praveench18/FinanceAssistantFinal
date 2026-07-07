@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import API from "../services/api";
 import "./login.css";
+import React from "react";
+import { toast } from "react-toastify";
 export default function Register() {
   const [loading, setLoading] = useState(false);
 
