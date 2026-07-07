@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
 import Sidebar from "../components/Sidebar";
-import "./AddExpense.css";
-export default function AddExpense() {
+import "./Addexpense.css";
+export default function Addexpense() {
 
     const navigate = useNavigate();
 
