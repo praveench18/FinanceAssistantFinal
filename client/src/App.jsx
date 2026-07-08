@@ -8,17 +8,16 @@ import Expenses from "./pages/Expenses";
 
 import ForgotPassword from "./pages/ForgotPassword";
 import ProtectedRoute from "./components/ProtectedRoute";
+import VerifyOTP from "./pages/VerifyOTP";
+import ResetPassword from "./pages/ResetPassword";
 import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <>
     <Routes>
-
       <Route path="/" element={<Login />} />
-
       <Route path="/register" element={<Register />} />
-
       <Route
         path="/dashboard"
         element={
@@ -48,6 +47,14 @@ function App() {
       <Route
         path="/forgot-password"
         element={<ForgotPassword />}
+      />
+      <Route
+      path="/verify-otp"
+      element={<VerifyOTP />}
+      />
+      <Route
+      path="/reset-password"
+      element={<ResetPassword />}
       />
     </Routes>
     <ToastContainer/>

@@ -2,11 +2,10 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import API from "../services/api";
 import "./login.css";
-import React from "react";
 import { toast } from "react-toastify";
 export default function Register() {
   const [loading, setLoading] = useState(false);
-
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -16,6 +15,7 @@ export default function Register() {
   });
 
   const handleChange = (e) => {
+    setError("");
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -24,20 +24,62 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    if (!formData.name.trim()) {
+    setError("Name is required.");
+    return;
+    }
+
+    if (!formData.email.trim()) {
+        setError("Email is required.");
+        return;
+    }
+
+    if (!formData.password.trim()) {
+        setError("Password is required.");
+        return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(formData.email)) {
+        setError("Please enter a valid email.");
+        return;
+    }
+    setLoading(true);
+
+    const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+
+    if (!passwordRegex.test(password)) {
+
+        setError(
+            "Password must contain 6+ characters, uppercase, lowercase, number and special character."
+        );
+
+        return;
+    }
 
     try {
 
       const res = await API.post("/auth/register", formData);
-
-      toast.success(res.data.message);
-
-      if (res.data.success) {
-        navigate("/");
-      }
+       if (res.data.success) {
+            toast.success(res.data.message);
+            navigate("/");
+        } else {
+            setError(res.data.message);
+            toast.error(res.data.message);
+        }
 
     } catch (err) {
-      toast.error("Registration Failed");
+      const message =
+       err.response?.data?.message || "Registration failed.";
+
+        setError(message);
+        toast.error(message);
       console.log(err);
+    }finally {
+        setLoading(false);
     }
   };
 
@@ -64,6 +106,7 @@ export default function Register() {
                     name="name"
                     placeholder="Enter your name"
                     onChange={handleChange}
+                    disabled={loading}
                 />
 
             </div>
@@ -77,6 +120,7 @@ export default function Register() {
                     name="email"
                     placeholder="Enter your email"
                     onChange={handleChange}
+                    disabled={loading}
                 />
 
             </div>
@@ -90,16 +134,30 @@ export default function Register() {
                     name="password"
                     placeholder="Enter your password"
                     onChange={handleChange}
+                    disabled={loading}
+
                 />
 
             </div>
+            {error && (
+                <p className="error-message">
+                    {error}
+                </p>
+            )}
 
             <button
-                type="submit"
-                className="login-btn"
-                disabled={loading}
-            >
-                {loading ? "Registering..." : "Register"}
+                 type="submit"
+                  className="login-btn"
+                  disabled={loading}
+              >
+                  {loading ? (
+                      <>
+                          <span className="spinner"></span>
+                          <span>Registering...</span>
+                      </>
+                  ) : (
+                      "Register"
+                  )}
             </button>
 
             <p className="register-link">

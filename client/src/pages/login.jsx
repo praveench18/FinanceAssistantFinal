@@ -14,7 +14,7 @@ export default function Login() {
     
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState("false");
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -114,18 +114,16 @@ export default function Login() {
 
                 <label>Password</label>
 
-                <div className="password-input-container">
+                <div className="password-box">
 
-                    <input
+                     <input
                         type={showPassword ? "text" : "password"}
                         name="password"
                         value={formData.password}
                         placeholder="Enter your password"
                         onChange={handleChange}
                         disabled={loading}
-                        className="password-input"
                     />
-
                     <button
                         type="button"
                         className="show-password-btn"

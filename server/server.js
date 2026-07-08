@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const sendEmail = require("./utils/sendEmail");
 require("dotenv").config();
+
+const sendEmail = require("./utils/sendEmail");
 
 // Connect Database
 require("./database/db");
