@@ -65,16 +65,6 @@ export default function Dashboard() {
     .reduce(
         (sum, expense) => sum + Number(expense.amount), 0
     );
-    const categoryTotals = {};
-        expenses.forEach((expense) => {
-            categoryTotals[expense.category] =
-                (categoryTotals[expense.category] || 0) +Number(expense.amount);
-       });
-
-const highestCategory =
-    Object.keys(categoryTotals).length > 0
-        ? Object.entries(categoryTotals).sort(
-              (a, b) => b[1] - a[1])[0]: ["None", 0];
     return (
         <div className="dashboard">
             <Sidebar />
