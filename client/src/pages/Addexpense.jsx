@@ -43,7 +43,6 @@ export default function Addexpense() {
             // Stay on the page for the next expense
         }
     } catch (err) {
-        console.log(err);
         toast.error("Failed to add expense");
     } finally {
         setLoading(false);

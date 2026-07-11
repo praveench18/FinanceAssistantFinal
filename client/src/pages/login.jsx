@@ -57,8 +57,6 @@ export default function Login() {
             }
 
         } catch (err) {
-
-            console.log(err);
             const message =
                 err.response?.data?.message || "Invalid email or password.";
             setError(message);
