@@ -76,3 +76,40 @@
 .dashboard-table tbody tr:hover{
     background:#f8fafc;
 }
+.orange{
+
+    background:#f59e0b;
+
+    color:white;
+
+}
+.purple{
+
+    background:#7c3aed;
+
+    color:white;
+
+}
+.insight-section{
+    margin-top:40px;
+}
+.insight-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+.insight-card{
+
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+    text-align:center;
+}
+.insight-card h4{
+    color:#64748b;
+    margin-bottom:10px;
+}
+.insight-card h3{
+    color:#2563eb;
+}

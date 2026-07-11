@@ -33,6 +33,22 @@ db.serialize(() => {
         expenseDate TEXT NOT NULL
         )
 `   );
+    db.run(`
+    CREATE TABLE IF NOT EXISTS budgets (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        amount REAL NOT NULL,
+        month INTEGER NOT NULL,
+        year INTEGER NOT NULL
+    )
+`);
+    db.run(`
+    CREATE TABLE IF NOT EXISTS savingsGoals(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        goalName TEXT NOT NULL,
+        targetAmount REAL NOT NULL,
+        targetMonths INTEGER NOT NULL
+    )
+`);
 });
 
 module.exports = db;

@@ -10,6 +10,8 @@ require("./database/db");
 // Import Routes
 const authRoutes = require("./routes/auth");
 const expenseRoutes = require("./routes/expense");
+const budgetRoutes = require("./routes/budget");
+const savingsRoutes = require("./routes/savings");
 
 const app = express();
 
@@ -20,7 +22,8 @@ app.use(express.json());
 // API Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/expense", expenseRoutes);
-
+app.use("/api/budget", budgetRoutes);
+app.use("/api/savings", savingsRoutes);
 // Home Route
 app.get("/", (req, res) => {
     res.json({

@@ -5,7 +5,8 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import AddExpense from "./pages/Addexpense";
 import Expenses from "./pages/Expenses";
-
+import Budget from "./pages/Budget";
+import Reports from "./pages/Reports";
 import ForgotPassword from "./pages/ForgotPassword";
 import ProtectedRoute from "./components/ProtectedRoute";
 import VerifyOTP from "./pages/VerifyOTP";
@@ -43,6 +44,22 @@ function App() {
             <Expenses />
           </ProtectedRoute>
         }
+      />
+      <Route
+        path="/budget"
+        element={
+          <ProtectedRoute>
+            <Budget />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+      path="/reports"
+      element={
+        <ProtectedRoute>
+            <Reports />
+        </ProtectedRoute>
+      }
       />
       <Route
         path="/forgot-password"

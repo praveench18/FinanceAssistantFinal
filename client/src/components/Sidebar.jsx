@@ -51,6 +51,12 @@ export default function Sidebar() {
                 >
                     <FaSignOutAlt /> Logout
                 </button>
+                    <button onClick={() => navigate("/budget")}>
+                    Budget
+                </button>
+                <button onClick={() => navigate("/reports")}>
+                    Reports
+                </button>
 
             </div>
 

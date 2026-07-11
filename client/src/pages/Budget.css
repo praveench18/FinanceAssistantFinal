@@ -1,0 +1,76 @@
+.budget-page{
+    display:flex;
+    min-height:100vh;
+    background:#f5f7fb;
+}
+
+.budget-content{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.budget-card{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    width:400px;
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+
+.budget-card h2{
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.budget-card label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.budget-card input{
+    width:100%;
+    padding:10px;
+    margin-bottom:20px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.save-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.save-btn:hover{
+    background:#1d4ed8;
+}
+.budget-stats{
+    display:flex;
+    gap:20px;
+    margin-bottom:25px;
+    justify-content:center;
+}
+
+.budget-box{
+    flex:1;
+    background:#2563eb;
+    color:white;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+}
+
+.budget-status{
+    text-align:center;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
