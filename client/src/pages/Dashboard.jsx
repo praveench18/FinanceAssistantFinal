@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import API from "../services/api";
-import MonthlyExpenseChart from "../components/MonthlyExpensechart";
+import MonthlyExpenseChart from "../components/MonthlyExpenseChart";
 import ExpenseChart from "../components/Expensechart";
 import "./Dashboard.css";
 export default function Dashboard() {
