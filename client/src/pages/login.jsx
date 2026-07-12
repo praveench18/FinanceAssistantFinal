@@ -63,11 +63,8 @@ export default function Login() {
             toast.error(message);
 
         }finally {
-
              setLoading(false);
-
         }
-
     };
 
     return (

@@ -30,8 +30,18 @@ export default function Addexpense() {
     setLoading(true);
 
     try {
-        const res = await API.post("/expense/add", expense);
-        if (res.data.success) {
+        let res;
+        if (editExpense) {
+            res = await API.put(
+                `/expense/update/${editExpense.id}`,
+                expense
+            );
+            toast.success("Expense updated successfully!");
+        } else {
+            res = await API.post(
+                "/expense/add",
+                expense
+            );
             toast.success("Expense added successfully!");
             setExpense({
                 title: "",
@@ -40,10 +50,11 @@ export default function Addexpense() {
                 expenseDate: ""
             });
 
-            // Stay on the page for the next expense
         }
+        navigate("/expenses");
+
     } catch (err) {
-        toast.error("Failed to add expense");
+        toast.error("Operation failed.");
     } finally {
         setLoading(false);
     }
@@ -53,7 +64,7 @@ export default function Addexpense() {
             <Sidebar />
             <div className="add-content">
                 <div className="add-card">
-                    <h2>Add Expense</h2>
+                    <h2>{ editExpense ? "Edit Expense" : "Add Expense"}</h2>
                     <form onSubmit={handleSubmit}>
                     <div className="form-group">
                     <label>Title</label>
@@ -100,6 +111,7 @@ export default function Addexpense() {
                     <input
                         type="date"
                         name="expenseDate"
+                        value={expense.expenseDate}
                         onChange={handleChange}
                     />
 
@@ -109,7 +121,11 @@ export default function Addexpense() {
                         className="add-btn"
                         disabled={loading}
                     >
-                        {loading ? "Adding..." : "Add Expense"}
+                       {loading
+                        ? "Saving..."
+                        : editExpense
+                            ? "Update Expense"
+                            : "Add Expense"}
                     </button>
 
                 </form>

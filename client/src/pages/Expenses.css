@@ -53,3 +53,42 @@
 .delete-btn:hover {
     background: #b91c1c;
 }
+.search-box{
+    margin:20px 0;
+}
+
+.search-box input{
+    width:100%;
+    max-width:350px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+.search-box{
+    display:flex;
+    gap:15px;
+    margin:20px 0;
+    flex-wrap:wrap;
+}
+
+.search-box input,
+.search-box select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+.search-box input{
+    width:280px;
+}
+.search-box select{
+    width:180px;
+}
+.search-box select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+    min-width:180px;
+}

@@ -8,14 +8,11 @@ export default function Sidebar() {
     const location = useLocation();
 
     const logout = () => {
-
         localStorage.removeItem("user");
         navigate("/");
-
     };
 
     return (
-
         <div className="sidebar">
 
             <h2 className="logo">
@@ -51,9 +48,11 @@ export default function Sidebar() {
                 >
                     <FaSignOutAlt /> Logout
                 </button>
-                    <button onClick={() => navigate("/budget")}>
+
+                <button onClick={() => navigate("/budget")}>
                     Budget
                 </button>
+
                 <button onClick={() => navigate("/reports")}>
                     Reports
                 </button>
@@ -61,7 +60,5 @@ export default function Sidebar() {
             </div>
 
         </div>
-
     );
-
 }

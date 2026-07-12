@@ -1,3 +1,49 @@
+.report-page{
+    display:flex;
+    min-height:100vh;
+    background:#f5f7fb;
+}
+
+.report-content{
+    flex:1;
+    margin-left:240px;
+    padding:30px;
+}
+
+.report-summary{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.report-card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    margin:20px 0;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.report-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+.report-table th,
+.report-table td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:left;
+}
+
+.report-table th{
+    background:#2563eb;
+    color:white;
+}
+
 .export-btn{
     padding:10px 20px;
     border:none;
@@ -5,8 +51,10 @@
     color:white;
     border-radius:8px;
     cursor:pointer;
+    margin-right:10px;
     margin-bottom:20px;
 }
+
 .export-btn:hover{
     background:#1d4ed8;
 }

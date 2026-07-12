@@ -4,6 +4,8 @@ import API from "../services/api";
 import "./Reports.css";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
 
 export default function Reports() {
     const [expenses, setExpenses] = useState([]);
@@ -68,7 +70,37 @@ export default function Reports() {
         });
         doc.save("Finance_Report.pdf");
     };
-    return (
+
+    const exportExcel = () => {
+
+    const worksheet = XLSX.utils.json_to_sheet(
+        expenses.map((expense) => ({
+            Title: expense.title,
+            Amount: expense.amount,
+            Category: expense.category,
+            Date: expense.expenseDate
+        }))
+    );
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(
+        workbook,
+        worksheet,
+        "Expenses"
+    );
+    const excelBuffer = XLSX.write(workbook, {
+        bookType: "xlsx",
+        type: "array"
+    });
+    const file = new Blob(
+        [excelBuffer],
+        {
+            type:
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        }
+    );
+    saveAs(file, "Finance_Report.xlsx");
+};
+return (
         <div className="report-page">
             <Sidebar />
             <div className="report-content">
