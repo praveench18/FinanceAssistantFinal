@@ -51,13 +51,12 @@ export default function Register() {
     const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
 
-    if (!passwordRegex.test(password)) {
-
-        setError(
-            "Password must contain 6+ characters, uppercase, lowercase, number and special character."
-        );
-
-        return;
+    if (!passwordRegex.test(formData.password)) {
+    setError(
+        "Password must contain at least 8 characters, including an uppercase letter, lowercase letter, number, and special character."
+    );
+    setLoading(false);
+    return;
     }
 
     try {
