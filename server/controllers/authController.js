@@ -23,18 +23,6 @@ exports.register = async (req, res) => {
                     message: "Email already exists"
                 });
             }
-            const samePassword = await bcrypt.compare(
-            password,
-            user.password
-            );
-            if (samePassword) {
-            return res.json({
-                success: false,
-                message: "New password cannot be the same as your old password."
-            });
-
-            }
-
             const hashedPassword = await bcrypt.hash(password,10);
 
             db.run(
@@ -210,6 +198,24 @@ exports.ResetPassword = async (req, res) => {
         }
     );
 });
+    if (!user) {
+    return res.json({
+        success: false,
+        message: "User not found."
+    });
+``}
+
+    const samePassword = await bcrypt.compare(
+    password,
+    user.password
+    );
+
+    if (samePassword) {
+    return res.json({
+        success: false,
+        message: "New password cannot be the same as your old password."
+    });
+    }
     if (!email || !password) {
         return res.json({
             success: false,
