@@ -3,14 +3,14 @@ const express = require("express");
 const router = express.Router();
 
 const {
-    register,
+    Register,
     login,
     ForgotPassword,
     VerifyOTP,
     ResetPassword
 } = require("../controllers/authController");
 
-router.post("/register", register);
+router.post("/register", Register);
 router.post("/login", login);
 router.post("/forgot-password", ForgotPassword);
 router.post("/verify-otp", VerifyOTP);
